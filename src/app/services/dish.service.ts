@@ -17,7 +17,7 @@ export class DishService {
     .pipe(map((res: any) => res));
   }
 
-  getDishById = (dishId: number): Observable<Dish> => {
+  getDishById = (dishId: string): Observable<Dish> => {
     return this.http.get(`${this.url}dishes/${dishId}`)
     .pipe(map((res: any) => res));
   }

@@ -22,7 +22,9 @@ const routes: Routes = [
   {
     path: 'contact',
     loadChildren: () => import('./contact/contact.module').then(m => m.ContactPageModule)
-  }
+  },
+  { path: 'dishdetail', loadChildren: './dishdetail/dishdetail.module#DishdetailPageModule' },
+  { path: 'dishdetail/:id', loadChildren: './dishdetail/dishdetail.module#DishdetailPageModule' }
 ];
 
 @NgModule({

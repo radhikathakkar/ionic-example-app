@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
   dish: Dish;
   leader: Leader;
   promotion: Promotion;
-
+  dishErrMess: string;
   constructor(private dishProvider: DishService, private leaderProvider: LeaderService, private promotionProvider: PromotionService,
               @Inject('BaseURL') private BaseURL) {
     console.log('Hello we are calling dish provider');
@@ -27,15 +27,15 @@ export class HomePage implements OnInit {
     this.dishProvider.getFeaturedDish()
     .subscribe((data: any) => {
      this.dish = data;
-    });
+    }, err => this.dishErrMess = err);
     this.leaderProvider.getFeaturedLeader()
     .subscribe((data: any) => {
      this.leader = data;
-    });
+    }, err => this.dishErrMess = err);
     this.promotionProvider.getFeaturedPromotion()
     .subscribe((data: any) => {
      this.promotion = data;
-    });
+    }, err => this.dishErrMess = err);
   }
 
 
