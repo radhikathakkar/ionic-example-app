@@ -29,17 +29,22 @@
 
 
   <div *ngIf="leaders">
-    <h2 class="about-us-title"> Corporate Leader</h2>
-    <ion-card *ngFor="let leader of leaders">
-      <ion-card-content>
-        <div class="leader-img"><img src="{{BaseURL + leader.image}}" /></div>
-        <div class="leader-text">
-          <ion-card-title class="ion-text-uppercase"> {{leader.name}} </ion-card-title>
-          <ion-card-subtitle> {{leader.designation}} </ion-card-subtitle>
-          <p> {{leader.description}} </p>
-        </div>
-      </ion-card-content>
-    </ion-card>
+      <h2 class="about-us-title"> Corporate Leader</h2>
+      <ion-list *ngFor="let leader of leaders">
+        
+          <ion-item>
+            <ion-avatar slot="start">
+                <img src="{{BaseURL + leader.image}}" />
+            </ion-avatar>
+            <ion-label>
+              <h2>{{leader.name}}</h2>
+              <h3> {{leader.designation}} </h3>
+              <p>{{leader.description}} </p>
+            </ion-label>
+          </ion-item>
+          </ion-list>
+
+    
   </div>
   <div [hidden]="leaders || errMess">
     <ion-spinner></ion-spinner>
