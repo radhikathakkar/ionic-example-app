@@ -1,0 +1,23 @@
+.about-us-title{
+    color: var(--ion-color-tertiary-shade);
+}
+.leader-img{
+    position: relative;
+    vertical-align: middle;
+    align-items: center;
+    top: 150px;
+    margin-right: 10px;
+}
+
+.leader-img img{
+    border-radius: 50%;
+    display: block;
+    top: 45%;
+    position: absolute;
+    width: 30%;
+}
+
+.leader-text{
+    width:70%;
+    float: right;
+}

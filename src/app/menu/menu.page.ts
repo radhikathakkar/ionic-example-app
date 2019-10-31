@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class MenuPage implements OnInit {
 
   dishes: Dish;
+  errMess: string;
   constructor(private dishService: DishService, private navCtrl: NavController, private router: Router,
               @Inject('BaseURL') private BaseURL) { }
 
@@ -19,7 +20,7 @@ export class MenuPage implements OnInit {
     this.dishService.getDishes()
     .subscribe((dishes: any) => {
       this.dishes = dishes;
-    });
+    }, err => this.errMess = err);
   }
 
   getSelectedDish = (dish: any) => {

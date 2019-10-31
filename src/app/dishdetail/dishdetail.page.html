@@ -1,9 +1,63 @@
 <ion-header>
   <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
     <ion-title>dishdetail</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
+    <ion-grid>
+        <ion-row>
+          <ion-col size-lg="6" offset-lg="3">
+              <div *ngIf="dish">
+                  <ion-card>
+                      <ion-card-header>
+                          <ion-card-title class="ion-text-uppercase ion-text-center"> {{dish.name}} </ion-card-title>
+                          <img src="{{BaseURL + dish.image}}" class="ion-margin-top"/>
+                        <ion-card-subtitle> {{dish.category}} </ion-card-subtitle>
+                      </ion-card-header>
+                    
+                      <ion-card-content>
+                        <div class="dish-price"> Price: ${{dish.price}} </div>
+                        <p> {{dish.description}} </p>
+                      </ion-card-content>
+                      <ion-row>
+                          <ion-col>
+                            <button ion-button icon-left clear small>
+                              <ion-icon name="star"></ion-icon>
+                              <div>{{ avgStars }} stars</div>
+                            </button>
+                          </ion-col>
+                          <ion-col>
+                            <button ion-button icon-left clear small>
+                              <ion-icon name="text"></ion-icon>
+                              <div>{{ totalComments }} Comments</div>
+                            </button>
+                          </ion-col>
+                        </ion-row>
+                    </ion-card>
+                    <div *ngIf="comments">
+                      <h1> Comment List</h1>
+                        <ion-card *ngFor="let comment of comments">
+                            <ion-card-content>
+                              <div> {{comment.comment}} </div>
+                              <p> {{comment.author}} </p>
+                              <p> {{comment.date}} </p>
+                            </ion-card-content>
+                          </ion-card>
+                    </div>
+                  </div>
+                  <div [hidden]="dish || errMess">
+                      <ion-spinner></ion-spinner>
+                      <h4>Loading . . . Please Wait</h4>
+                    </div>
+                    <div *ngIf="errMess">
+                      <h2>Error</h2>
+                      <h4>{{errMess}}</h4>
+                    </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
 </ion-content>
