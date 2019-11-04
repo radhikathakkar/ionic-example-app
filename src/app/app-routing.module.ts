@@ -24,7 +24,9 @@ const routes: Routes = [
     loadChildren: () => import('./contact/contact.module').then(m => m.ContactPageModule)
   },
   { path: 'dishdetail', loadChildren: './dishdetail/dishdetail.module#DishdetailPageModule' },
-  { path: 'dishdetail/:id', loadChildren: './dishdetail/dishdetail.module#DishdetailPageModule' }
+  { path: 'dishdetail/:id', loadChildren: './dishdetail/dishdetail.module#DishdetailPageModule' },
+  { path: 'favorites', loadChildren: './favorites/favorites.module#FavoritesPageModule' },
+  { path: 'reservation', loadChildren: './reservation/reservation.module#ReservationPageModule' },
 ];
 
 @NgModule({

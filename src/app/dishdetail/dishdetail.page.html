@@ -60,4 +60,16 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+              <ion-fab-button  color="primary" (click)="addToFavorites()"> 
+                  <ion-icon name="star"></ion-icon>
+              </ion-fab-button >
+      </ion-fab>
+
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="favorite">
+          <ion-fab-button  color="primary"> 
+              <ion-icon name="heart"></ion-icon>
+          </ion-fab-button >
+  </ion-fab>
 </ion-content>

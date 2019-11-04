@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      My Favorites
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="favorites">
+
+    <ion-list *ngFor="let favorite of favorites">
+      <ion-item-sliding>
+        <ion-item>
+          <ion-thumbnail>
+            <img src="{{BaseURL + favorite.image}}" />
+          </ion-thumbnail>
+          <h3>{{ favorite.name }}</h3>
+          <p>{{ favorite.description }}</p>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="share(item)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+  <div [hidden]="favorites || errMess">
+    <ion-spinner></ion-spinner>
+    <h4>Loading . . . Please Wait</h4>
+  </div>
+  <div *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{ errMess }}</h4>
+  </div>
+
+
+
+</ion-content>

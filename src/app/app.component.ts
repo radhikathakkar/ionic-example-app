@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, ModalController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { ReservationPage } from './reservation/reservation.page';
 
 @Component({
   selector: 'app-root',
@@ -31,12 +32,18 @@ export class AppComponent {
       url: '/contact',
       icon: 'contact'
     },
+    {
+      title: 'My Favorite',
+      url: '/favorites',
+      icon: 'heart'
+    }
   ];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private modalController: ModalController
   ) {
     this.initializeApp();
   }
@@ -46,5 +53,11 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+  async openReserve() {
+      const modal = this.modalController.create({
+        component: ReservationPage
+      });
+      (await modal).present();
   }
 }
