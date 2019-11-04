@@ -24,8 +24,8 @@ export class MenuPage implements OnInit {
   }
 
   getSelectedDish = (dish: any) => {
-    // this.router.navigate([`/dishdetail/${dish.id}`]);
-    this.navCtrl.navigateForward(`/dishdetail/${dish.id}`);
+    const url = '/dishdetail';
+    this.navCtrl.navigateForward(`${url}/${dish.id}`);
   }
 
 }
