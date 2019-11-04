@@ -22,7 +22,7 @@
           <p>{{ favorite.description }}</p>
         </ion-item>
         <ion-item-options side="end">
-          <ion-item-option color="danger" (click)="share(item)">
+          <ion-item-option color="danger" (click)="deleteFavorites(item,favorite.id)">
             <ion-icon name="trash"></ion-icon>
           </ion-item-option>
         </ion-item-options>

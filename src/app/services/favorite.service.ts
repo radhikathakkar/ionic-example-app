@@ -29,4 +29,12 @@ export class FavoriteService {
     return this.dishService.getDishes()
     .pipe(map(dishes => dishes.filter(dish => this.favorites.some(el => el === dish.id))));
   }
+
+  deleteFavoriteDish = (id: number): Observable<Dish[]> => {
+    const index = this.favorites.indexOf(id);
+    if  (index >= 0) {
+      this.favorites.splice(index, 1);
+      return this.getFavoriteDishes();
+    }
+  }
 }
