@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start" (click)="closeModal()">
+          <ion-icon name="close"></ion-icon>
+        </ion-buttons>
+    <ion-title>comments</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="addCommentsForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-input type="text" formControlName="author" placeholder="Your Name"></ion-input>
+    </ion-item>
+    <ion-list-header>
+      <ion-label>Your Rating</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-range min="0" max="10" color="secondary" formControlName="rating">
+        <ion-label slot="start"> <ion-icon name="sad"></ion-icon></ion-label>
+        <ion-label slot="end"><ion-icon name="happy"></ion-icon></ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-textarea placeholder="Your Comments" rows="8" formControlName="comment"></ion-textarea>
+    </ion-item>
+    <ion-button type="submit" color="secondary" [disabled]="!addCommentsForm.valid">Add Comment</ion-button>
+  </form>
+</ion-content>

@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { baseURL } from 'src/shared/baseurl';
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationPageModule } from './reservation/reservation.module';
+import { CommentsPageModule } from './comments/comments.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,8 @@ import { ReservationPageModule } from './reservation/reservation.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    ReservationPageModule
+    ReservationPageModule,
+    CommentsPageModule
   ],
   providers: [
     StatusBar,

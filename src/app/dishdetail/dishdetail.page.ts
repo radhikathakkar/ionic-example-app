@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DishService } from '../services/dish.service';
 import { FavoriteService } from '../services/favorite.service';
+import { ActionSheetController, ModalController } from '@ionic/angular';
+import { CommentsPage } from '../comments/comments.page';
 
 @Component({
   selector: 'app-dishdetail',
@@ -19,8 +21,9 @@ export class DishdetailPage implements OnInit {
   comments: any = [];
   favorite: boolean;
 
-  constructor(private route: ActivatedRoute, private dishService: DishService,
-              @Inject('BaseURL') private BaseURL, private favoriteService: FavoriteService) { }
+  constructor(private route: ActivatedRoute, private dishService: DishService, private actionSheetController: ActionSheetController,
+              @Inject('BaseURL') private BaseURL, private favoriteService: FavoriteService, private router: Router,
+              private modalCtrl: ModalController) { }
 
   ngOnInit() {
     console.log('dish detail calling');
@@ -44,7 +47,50 @@ export class DishdetailPage implements OnInit {
 
 
   addToFavorites = () => {
-    // console.log(this.dish.id);
     this.favorite = this.favoriteService.addFavorite(this.dish.id);
+  }
+
+  async openCommentsModal() {
+    const modal = this.modalCtrl.create({
+      component: CommentsPage,
+      componentProps: { comments: this.comments }
+    });
+    (await modal).onDidDismiss().then((d: any) => this.handleModalDismiss(d));
+    (await modal).present();
+    console.log('comments before add', this.comments);
+  }
+  handleModalDismiss = ({ data }) => {
+    if (data.cancelled) {
+      alert('cancel');
+    } else {
+      this.comments.push(data);
+      console.log('comments after add', this.comments);
+    }
+  }
+  openActionSheetData = async () => {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'data',
+      buttons: [
+        {
+          text: 'Add to Favorite',
+          handler: () => {
+            this.addToFavorites();
+          }
+        },
+        {
+          text: 'Add Comment',
+          handler: () => {
+            this.openCommentsModal();
+          }
+        },
+        {
+          text: 'Cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 }

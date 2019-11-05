@@ -13,7 +13,7 @@ import { computeStackId } from '@ionic/angular/dist/directives/navigation/stack-
 export class ReservationPage implements OnInit {
 
   reservationForm: FormGroup;
-  constructor(private viewCtrl: ModalController, private fb: FormBuilder) {
+  constructor(private modalCtrl: ModalController, private fb: FormBuilder) {
     this.createForm();
   }
 
@@ -30,7 +30,7 @@ export class ReservationPage implements OnInit {
     });
   }
   async closeModal() {
-    await this.viewCtrl.dismiss();
+    await this.modalCtrl.dismiss();
   }
 
   onSubmit = () => {
