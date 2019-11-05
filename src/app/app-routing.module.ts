@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'favorites', loadChildren: './favorites/favorites.module#FavoritesPageModule' },
   { path: 'reservation', loadChildren: './reservation/reservation.module#ReservationPageModule' },
   { path: 'comments', loadChildren: './comments/comments.module#CommentsPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
 ];
 
 @NgModule({

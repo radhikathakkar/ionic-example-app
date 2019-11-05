@@ -45,6 +45,9 @@ export class DishdetailPage implements OnInit {
     }
   }
 
+  backToMenu = () => {
+    this.router.navigate(['/menu']);
+  }
 
   addToFavorites = () => {
     this.favorite = this.favoriteService.addFavorite(this.dish.id);

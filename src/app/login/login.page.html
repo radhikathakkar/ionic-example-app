@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="closeModal()">
+      <ion-icon name="close"></ion-icon>
+    </ion-buttons>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Remember Me</ion-label>
+      <ion-checkbox color="primary" formControlName="remember"></ion-checkbox>
+    </ion-item>
+    <ion-button type="submit" color="secondary" [disabled]="!loginForm.valid">Login </ion-button>
+  </form>
+
+</ion-content>

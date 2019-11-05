@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
+import { IonicStorageModule } from '@ionic/storage';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -12,6 +12,7 @@ import { baseURL } from 'src/shared/baseurl';
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationPageModule } from './reservation/reservation.module';
 import { CommentsPageModule } from './comments/comments.module';
+import { LoginPageModule } from './login/login.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,10 +21,12 @@ import { CommentsPageModule } from './comments/comments.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     ReservationPageModule,
-    CommentsPageModule
+    CommentsPageModule,
+    LoginPageModule
   ],
   providers: [
     StatusBar,

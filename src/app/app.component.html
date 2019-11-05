@@ -7,6 +7,18 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
+          <ion-list>
+              <ion-list-header color="primary-light" text-wrap>
+                  <ion-thumbnail item-left>
+                    <img src="../assets/images/logo.png" />
+                  </ion-thumbnail>
+                  <h3>Ristorante Con Fusion</h3>
+              </ion-list-header>
+              <ion-item (click)="openLogin()" item-left>
+                  <ion-icon name="log-in" item-left></ion-icon>
+                  <ion-label style="padding-left: 30px;">Login </ion-label>
+              </ion-item>
+          </ion-list>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
